@@ -40,16 +40,16 @@ public class EncryptDialog {
 
     private void initUI() {
 
-        JTextField username = new JTextField();
-        JTextField password = new JPasswordField();
+        JTextField key = new JTextField();
+        JTextField password = new JTextField();
         Object[] message = {
-            "Username:", username,
+            "Key:", key,
             "Password:", password
         };
 
-        int option = JOptionPane.showConfirmDialog(null, message, "Login", JOptionPane.OK_CANCEL_OPTION);
+        int option = JOptionPane.showConfirmDialog(null, message, "Encrypt", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
-            if (username.getText().equals("h") && password.getText().equals("h")) {
+            if (key.getText().equals("h") && password.getText().equals("h")) {
                 System.out.println("Login successful");
             } else {
                 System.out.println("login failed");

@@ -1,5 +1,6 @@
 package com.citechnical.crypto;
 
+import java.nio.charset.Charset;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
@@ -9,11 +10,21 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
 /**
- * General utilities
+ * Cryptography utilities
  */
-public class Utils
+public class CryptoUtils
 {
     private static String	digits = "0123456789abcdef";
+
+    private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+
+    public static String decodeUTF8(byte[] bytes) {
+        return new String(bytes, UTF8_CHARSET);
+    }
+
+    public static byte[] encodeUTF8(String string) {
+        return string.getBytes(UTF8_CHARSET);
+    }
 
     /**
      * Return length many bytes of the passed in byte array as a hex string.

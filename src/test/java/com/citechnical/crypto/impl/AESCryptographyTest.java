@@ -1,16 +1,11 @@
 package com.citechnical.crypto.impl;
 
+import com.citechnical.crypto.CryptoUtils;
 import junit.framework.TestCase;
 
 import java.nio.charset.Charset;
 
 public class AESCryptographyTest extends TestCase {
-
-    private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
-
-    private static String decodeUTF8(byte[] bytes) {
-        return new String(bytes, UTF8_CHARSET);
-    }
 
     public void setUp() throws Exception {
         super.setUp();
@@ -31,7 +26,7 @@ public class AESCryptographyTest extends TestCase {
         AESCryptography crypter = new AESCryptography();
         String input = new String("David L. Whitehurst");
         byte[] encrypted = crypter.encrypt(input);
-        String reverse = decodeUTF8(crypter.decrypt(encrypted));
+        String reverse = CryptoUtils.decodeUTF8(crypter.decrypt(encrypted));
         assertEquals("David L. Whitehurst", reverse);
     }
 }

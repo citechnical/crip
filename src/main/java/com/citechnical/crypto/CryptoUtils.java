@@ -14,14 +14,30 @@ import javax.crypto.spec.IvParameterSpec;
  */
 public class CryptoUtils
 {
+    /**
+     *
+     */
     private static String	digits = "0123456789abcdef";
 
+    /**
+     *  constant UTF-8 set of characters
+     */
     private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
 
+    /**
+     * This method returns a string from expected UTF-8 bytes
+     * @param bytes
+     * @return
+     */
     public static String decodeUTF8(byte[] bytes) {
         return new String(bytes, UTF8_CHARSET);
     }
 
+    /**
+     * This method returns a byte-array
+     * @param string
+     * @return
+     */
     public static byte[] encodeUTF8(String string) {
         return string.getBytes(UTF8_CHARSET);
     }

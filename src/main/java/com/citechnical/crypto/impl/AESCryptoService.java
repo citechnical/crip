@@ -37,7 +37,7 @@ import java.security.Key;
  * @version CHANGEME
  */
 
-public class AESCryptography implements Cryptography {
+public class AESCryptoService implements Cryptography {
 
     /**
      * @param value

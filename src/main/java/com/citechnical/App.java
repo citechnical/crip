@@ -63,7 +63,7 @@ public class App extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 System.out.println("Selected Decrypt Password");
-                System.exit(0);
+                DecryptDialog dialog = new DecryptDialog();
             }
         });
 

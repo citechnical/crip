@@ -3,8 +3,6 @@ package com.citechnical.crypto.impl;
 import com.citechnical.crypto.CryptoUtils;
 import junit.framework.TestCase;
 
-import java.nio.charset.Charset;
-
 public class AESCryptographyTest extends TestCase {
 
     public void setUp() throws Exception {
@@ -15,7 +13,7 @@ public class AESCryptographyTest extends TestCase {
     }
 
     public void testEncrypt() throws Exception {
-        AESCryptography crypter = new AESCryptography();
+        AESCryptoService crypter = new AESCryptoService();
         String input = new String("David L. Whitehurst");
         byte[] encrypted = crypter.encrypt(input);
 
@@ -23,7 +21,7 @@ public class AESCryptographyTest extends TestCase {
     }
 
     public void testDecrypt() throws Exception {
-        AESCryptography crypter = new AESCryptography();
+        AESCryptoService crypter = new AESCryptoService();
         String input = new String("David L. Whitehurst");
         byte[] encrypted = crypter.encrypt(input);
         String reverse = CryptoUtils.decodeUTF8(crypter.decrypt(encrypted));

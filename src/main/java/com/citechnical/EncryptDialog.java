@@ -21,6 +21,10 @@
 
 package com.citechnical;
 
+import com.citechnical.crypto.CryptoUtils;
+import com.citechnical.crypto.impl.AESCryptoService;
+import com.citechnical.jdbc.mysql.MySQLCryptoService;
+
 import javax.swing.*;
 
 /**
@@ -49,13 +53,14 @@ public class EncryptDialog {
 
         int option = JOptionPane.showConfirmDialog(null, message, "Encrypt", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
-            if (key.getText().equals("h") && password.getText().equals("h")) {
-                System.out.println("Login successful");
-            } else {
-                System.out.println("login failed");
-            }
+            MySQLCryptoService service = new MySQLCryptoService();
+            AESCryptoService cryptoService = new AESCryptoService();
+            String str1 = key.getText();
+            String plainTextPassword = password.getText();
+            byte[] encryptedPasswordBytes = cryptoService.encrypt(plainTextPassword);
+            service.insertEncryptedPassword(str1, encryptedPasswordBytes);
         } else {
-            System.out.println("Login canceled");
+            System.out.println("Entry canceled");
         }
     }
 

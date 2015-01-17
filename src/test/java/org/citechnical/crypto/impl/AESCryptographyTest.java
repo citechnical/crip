@@ -1,6 +1,6 @@
-package com.citechnical.crypto.impl;
+package org.citechnical.crypto.impl;
 
-import com.citechnical.crypto.CryptoUtils;
+import org.citechnical.crypto.CryptoUtils;
 import junit.framework.TestCase;
 
 public class AESCryptographyTest extends TestCase {

@@ -19,11 +19,10 @@
  */
 
 
-package com.citechnical;
+package org.citechnical;
 
-import com.citechnical.crypto.CryptoUtils;
-import com.citechnical.crypto.impl.AESCryptoService;
-import com.citechnical.jdbc.mysql.MySQLCryptoService;
+import org.citechnical.crypto.impl.AESCryptoService;
+import org.citechnical.jdbc.mysql.MySQLCryptoService;
 
 import javax.swing.*;
 
@@ -31,38 +30,37 @@ import javax.swing.*;
  * Class description goes here ...
  *
  * @author <a href="mailto:dlwhitehurst@gmail.com">David L. Whitehurst</a>
- *         created: 1/16/15
- *         time: 11:00 PM
+ *         created: 1/15/15
+ *         time: 11:27 PM
  * @version CHANGEME
  */
 
-public class DecryptDialog {
+public class EncryptDialog {
 
-    public DecryptDialog() {
+    public EncryptDialog() {
         initUI();
     }
 
     private void initUI() {
+
         JTextField key = new JTextField();
+        JTextField password = new JTextField();
         Object[] message = {
-            "Key:", key
+            "Key:", key,
+            "Password:", password
         };
 
-        int option = JOptionPane.showConfirmDialog(null, message, "Decrypt", JOptionPane.OK_CANCEL_OPTION);
+        int option = JOptionPane.showConfirmDialog(null, message, "Encrypt", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             MySQLCryptoService service = new MySQLCryptoService();
             AESCryptoService cryptoService = new AESCryptoService();
-            byte[] encryptedPasswordBytes = null;
-            encryptedPasswordBytes = service.getEncryptedPassword(key.getText());
-            byte[] plainBytes = cryptoService.decrypt(encryptedPasswordBytes);
-            String str = CryptoUtils.decodeUTF8(plainBytes);
-            System.out.println("Your lost memory: " + str);
-
+            String str1 = key.getText();
+            String plainTextPassword = password.getText();
+            byte[] encryptedPasswordBytes = cryptoService.encrypt(plainTextPassword);
+            service.insertEncryptedPassword(str1, encryptedPasswordBytes);
         } else {
             System.out.println("Entry canceled");
         }
-
-
     }
 
 }

@@ -19,10 +19,9 @@
  */
 
 
-package com.citechnical.jdbc.mysql;
+package org.citechnical.jdbc.mysql;
 
-import com.citechnical.jdbc.CryptoService;
-import com.mysql.jdbc.MySQLConnection;
+import org.citechnical.jdbc.CryptoService;
 
 import java.sql.*;
 

@@ -1,4 +1,4 @@
-package com.citechnical.crypto;
+package org.citechnical.crypto;
 
 import java.nio.charset.Charset;
 import java.security.NoSuchAlgorithmException;

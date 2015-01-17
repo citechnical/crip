@@ -1,4 +1,4 @@
-package com.citechnical.jdbc;
+package org.citechnical.jdbc;
 
 import java.sql.Connection;
 import java.sql.SQLException;

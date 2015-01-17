@@ -1,4 +1,4 @@
-package com.citechnical.crypto;
+package org.citechnical.crypto;
 
 import junit.framework.TestCase;
 

@@ -1,4 +1,4 @@
-package com.citechnical.crypto;
+package org.citechnical.crypto;
 
 /**
  * Class description goes here ...

@@ -19,53 +19,32 @@
  */
 
 
-package com.citechnical.crypto;
+package org.citechnical.crypto.impl;
 
-import java.nio.charset.Charset;
-import java.security.Key;
-import java.security.MessageDigest;
-import java.security.SecureRandom;
+import org.citechnical.crypto.Cryptography;
 
 import javax.crypto.Cipher;
-import javax.crypto.Mac;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.security.Key;
 
 /**
  * Class description goes here ...
  *
  * @author <a href="mailto:dlwhitehurst@gmail.com">David L. Whitehurst</a>
  *         created: 1/16/15
- *         time: 7:56 AM
+ *         time: 1:46 PM
  * @version CHANGEME
  */
 
-public class CryptoExample {
-    //private IvParameterSpec ivSpec;
-    //private SecretKeySpec keySpec;
-    //private Cipher cipher;
-    private static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+public class AESCryptoService implements Cryptography {
 
-    private static String decodeUTF8(byte[] bytes) {
-        return new String(bytes, UTF8_CHARSET);
-    }
-
-    private static byte[] encodeUTF8(String string) {
-        return string.getBytes(UTF8_CHARSET);
-    }
-
-    public static void main(String[] args) throws Exception {
-        CryptoExample e = new CryptoExample();
-        String input = new String("john doe");
-        System.out.println("The unencrypted input is: " + input);
-        byte[] eArray = e.encrypt(input);
-        byte[] dArray = e.decrypt(eArray);
-        String check;
-        check = decodeUTF8(dArray);
-        System.out.println("The unencrypted result is:" + check);
-    }
-
-    public static byte[] encrypt(String value) {
+    /**
+     * @param value
+     * @return
+     */
+    @Override
+    public byte[] encrypt(String value) {
         byte[] encrypted = null;
         try {
 
@@ -85,7 +64,12 @@ public class CryptoExample {
         return encrypted;
     }
 
-    public static byte[] decrypt(byte[] encrypted) {
+    /**
+     * @param encrypted
+     * @return
+     */
+    @Override
+    public byte[] decrypt(byte[] encrypted) {
         byte[] original = null;
         Cipher cipher = null;
         try {
@@ -105,4 +89,3 @@ public class CryptoExample {
         return original;
     }
 }
-

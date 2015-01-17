@@ -1,4 +1,4 @@
-package com.citechnical.jdbc;
+package org.citechnical.jdbc;
 
 /**
  * Class description goes here ...

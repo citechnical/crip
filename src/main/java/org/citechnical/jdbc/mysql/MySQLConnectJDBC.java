@@ -19,9 +19,9 @@
  */
 
 
-package com.citechnical.jdbc.mysql;
+package org.citechnical.jdbc.mysql;
 
-import com.citechnical.jdbc.ConnectJDBC;
+import org.citechnical.jdbc.ConnectJDBC;
 
 import java.sql.*;
 

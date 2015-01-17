@@ -23,7 +23,7 @@ package org.citechnical;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -32,23 +32,19 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
-
 public class App extends JFrame {
-
     public App() {
-
         initUI();
     }
 
     private void initUI() {
-
         JMenuBar menubar = new JMenuBar();
         ImageIcon iconNew = new ImageIcon("new.png");
         ImageIcon iconOpen = new ImageIcon("open.png");
         ImageIcon iconSave = new ImageIcon("save.png");
         ImageIcon iconExit = new ImageIcon("exit.png");
-        ImageIcon iconLock = new ImageIcon("images/Lock.png");
-        ImageIcon iconKey = new ImageIcon("images/Key.png");
+        ImageIcon iconLock = fetchImageIcon("/Lock.png", this.getClass());
+        ImageIcon iconKey = fetchImageIcon("/Key.png",this.getClass());
 
         JMenu file = new JMenu("File");
         file.setMnemonic(KeyEvent.VK_F);
@@ -60,8 +56,8 @@ public class App extends JFrame {
         encrypt.setMnemonic(KeyEvent.VK_E);
         encrypt.setToolTipText("Encrypt Password");
         encrypt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E,
-                ActionEvent.CTRL_MASK));
 
+                ActionEvent.CTRL_MASK));
         encrypt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
@@ -71,14 +67,12 @@ public class App extends JFrame {
             }
         });
 
-
-
         JMenuItem decrypt = new JMenuItem("Decrypt Password...", iconKey);
         decrypt.setMnemonic(KeyEvent.VK_D);
         decrypt.setToolTipText("Encrypt Password");
         decrypt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,
-                ActionEvent.CTRL_MASK));
 
+                ActionEvent.CTRL_MASK));
         decrypt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
@@ -86,7 +80,6 @@ public class App extends JFrame {
                 DecryptDialog dialog = new DecryptDialog();
             }
         });
-
 
         imp.add(encrypt);
         imp.add(decrypt);
@@ -102,10 +95,11 @@ public class App extends JFrame {
 
         JMenuItem fileExit = new JMenuItem("Exit", iconExit);
         fileExit.setMnemonic(KeyEvent.VK_C);
+
         fileExit.setToolTipText("Exit application");
         fileExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
-            ActionEvent.CTRL_MASK));
 
+                ActionEvent.CTRL_MASK));
         fileExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
@@ -122,7 +116,6 @@ public class App extends JFrame {
         file.add(fileExit);
 
         menubar.add(file);
-
         setJMenuBar(menubar);
 
         setTitle("Cyptography WorkCenter");
@@ -132,7 +125,6 @@ public class App extends JFrame {
     }
 
     public static void main(String[] args) {
-
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -141,4 +133,15 @@ public class App extends JFrame {
             }
         });
     }
+
+    private static ImageIcon fetchImageIcon(String aImageId, Class<?> aClass){
+      URL imageURL = aClass.getResource(aImageId);
+      if ( imageURL != null ) {
+        return new ImageIcon(imageURL);
+      }
+      else {
+        throw new IllegalArgumentException("Cannot retrieve image using id: " + aImageId);
+      }
+    }
+
 }

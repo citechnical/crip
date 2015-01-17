@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2014,2015 Contributors - see below
+ * Copyright (c) 2014,2015 CITechnical.org
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License v2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
  * License.
  *
  * Contributors:
- *    dlwhitehurst 
+ *    dlwhitehurst - David L. Whitehurst
  *
  *******************************************************************************
  */

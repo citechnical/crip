@@ -84,15 +84,6 @@ public class App extends JFrame {
         imp.add(encrypt);
         imp.add(decrypt);
 
-        JMenuItem fileNew = new JMenuItem("New", iconNew);
-        fileNew.setMnemonic(KeyEvent.VK_N);
-
-        JMenuItem fileOpen = new JMenuItem("Open", iconOpen);
-        fileNew.setMnemonic(KeyEvent.VK_O);
-
-        JMenuItem fileSave = new JMenuItem("Save", iconSave);
-        fileSave.setMnemonic(KeyEvent.VK_S);
-
         JMenuItem fileExit = new JMenuItem("Exit", iconExit);
         fileExit.setMnemonic(KeyEvent.VK_C);
 
@@ -107,10 +98,6 @@ public class App extends JFrame {
             }
         });
 
-        file.add(fileNew);
-        file.add(fileOpen);
-        file.add(fileSave);
-        file.addSeparator();
         file.add(imp);
         file.addSeparator();
         file.add(fileExit);
